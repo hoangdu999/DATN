@@ -1,0 +1,27 @@
+@media only screen and (max-width: 726px) {
+  .icon-bar-content{
+    display: unset !important;
+    position: absolute;
+  }
+  .home-tile-text{
+    margin-left: 24px;
+  }
+  .sidebar-menu{
+    position: absolute;
+    top: 120px;
+    left: 0;
+    width: 0 !important;
+    transition: all 0.5s !important;
+  }
+  .home-wrapper{
+    margin: 0  20px!important;
+  }
+  /* Thu gọn menu */
+  .sidebar-menu{
+    width: 50% !important;
+  }
+  /* Thu gọn menu */
+  .sidebar-menu.m-menu-collapse{
+    width: 0px !important;
+  }
+}

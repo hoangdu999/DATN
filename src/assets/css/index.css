@@ -1,0 +1,262 @@
+@import url(./components/icon.css);
+@import url(./components/tool-tip.css);
+@import url(./responsive/index.css);
+@font-face {
+  font-family: GoogleSans-Regular;
+  src: url(../fonts/notosans-regular.2cb88a13.woff2);
+}
+@font-face {
+  font-family: GoogleSans-Bold;
+  src: url(../fonts/notosans-bold.3ede5aff.woff2);
+}
+@font-face {
+  font-family: GoogleSans-Italic;
+  src: url(../fonts/notosans-italic.1c1aaac9.woff2);
+}
+@font-face {
+  font-family: GoogleSans-Semibold;
+  src: url(../fonts/notosans-semibold.df3e6dc4.woff2);
+}
+:root {
+  --bgr-header: #ffff;
+  --bgr-menu: rgb(233, 233, 233);
+  --brg-form: rgb(156, 4, 4);
+  --brg-home-title: rgb(57, 57, 65);
+  --btn-primary: #5d5ba4;
+  --btn-hover: #474691;
+  --btn-active: #3a9c2d;
+  --width-column: 84px;
+
+  --color-text: #fff;
+  --input-focus: #019160;
+  --input-focus-err: #ff4747;
+  --border-table: #bbb;
+  --bgr-menu: rgb(213, 213, 239);
+
+  --bgr-pop-up: rgba(87, 86, 86, 0.433);
+  --border-input-default: #bbb;
+
+  --width-row: 36px;
+  --height-default: 34px;
+
+  --height-menu: 50px;
+  --with-menu: 200px;
+  --with-menu-collapse: 56px;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: GoogleSans-Regular;
+  font-size: 13px;
+  width: 100%;
+  position: relative;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+i {
+  transition: transform 0.3s ease;
+}
+i:hover {
+  transform: scale(0.9);
+}
+li {
+  list-style-type: none;
+}
+img {
+  height: 100%;
+  width: 100%;
+}
+.flex {
+  display: flex;
+}
+.grid-2-12 {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-column-gap: 12px;
+}
+.flex-js {
+  display: flex;
+  justify-content: space-between;
+}
+.flex-jc {
+  display: flex;
+  justify-content: center;
+}
+.nowrap {
+  white-space: nowrap;
+}
+.item-center {
+  align-items: center;
+}
+.text-center {
+  text-align: center;
+}
+.w-100 {
+  width: 100%;
+}
+.w-50 {
+  width: 50%;
+}
+.w-48 {
+  width: 48%;
+}
+.m-10 {
+  margin: 10px;
+}
+.mt-4 {
+  margin-top: 4px;
+}
+.mt-8 {
+  margin-top: 8px;
+}
+.mt-10 {
+  margin-top: 10px;
+}
+.mt-16 {
+  margin-top: 16px;
+}
+.mt-30 {
+  margin-top: 30px;
+}
+.mt-32 {
+  margin-top: 32px;
+}
+.mt-50 {
+  margin-top: 50px;
+}
+.mb-5 {
+  margin-bottom: 5px;
+}
+.mb-12 {
+  margin-bottom: 12px;
+}
+.mb-15 {
+  margin-bottom: 15px;
+}
+.mr-10 {
+  margin-right: 10px;
+}
+.pt-20 {
+  padding-top: 20px;
+}
+.pb-20 {
+  padding-bottom: 20px;
+}
+.pb-25 {
+  padding-bottom: 25px;
+}
+
+.h-30 {
+  height: 30px;
+}
+.hidden {
+  display: none;
+}
+.display-block {
+  display: block;
+}
+.flex-col {
+  flex-direction: column;
+}
+.icon-color {
+  color: #0075c0;
+}
+.text-bold {
+  font-weight: bold;
+}
+.transition {
+  transition: all 1;
+}
+.button-hover:hover {
+  color: #ffff !important;
+  background-color: black !important;
+}
+.uudai-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.uudai-li {
+  height: 186px;
+  flex-basis: 24.3%;
+  border-radius: 15px;
+  text-align: center;
+  padding: 10px;
+  background-color: #ffff;
+}
+.boder-radius15 {
+  border-radius: 15px;
+}
+.uudai-wrap {
+  justify-content: space-between;
+}
+
+.uudai-icon {
+  width: 75px;
+}
+
+.uudai-title {
+  font-size: large;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+.uudai-detail {
+  font-size: 14px;
+}
+.uudai-li {
+  border: 1px solid rgb(210, 209, 209);
+}
+.cur {
+  cursor: pointer;
+}
+.p-hover:hover {
+  color: rgb(162, 3, 3);
+}
+
+.border-hover:hover {
+  border: 1px solid rgb(162, 3, 3) !important;
+}
+.item-hover:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+.item-hover {
+  transition: all 0.7s ease;
+  position: relative;
+}
+.button-hover:hover {
+  background-color: black;
+  color: #ffff;
+}
+.button-hoverred:hover {
+  background-color: rgb(162, 3, 3) !important;
+}
+.cl-red {
+  color: rgb(156, 4, 4);
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+  /* Loại bỏ khoảng trống */
+}
+.cl-black {
+  color: black;
+}
+.size-120 {
+  font-size: 120%;
+}
+.size-150 {
+  font-size: 150%;
+}
+
+.size-100 {
+  color: rgb(142, 2, 2);
+}

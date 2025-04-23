@@ -1,0 +1,86 @@
+.m-btn{
+    font-size: 13px;
+    background-color: var(--btn-primary);
+    color: #ffffff;
+    border: none;
+    /* outline: none; */
+    border-radius: 3px;
+    text-align: center;
+    padding: 0  16px;
+    height: var(--height-default);
+    cursor: pointer;
+    font-weight: 600;
+    height: var(--height-default);
+    font-family: inherit;
+    min-width: 80px;
+}
+
+.m-btn:active{
+    background-color: var(--bgr-header);
+} 
+/* btn close */
+.m-btn.close{
+    background-color: #FFFFFF;
+    border: 1px solid #8d9096;
+    color: #111;
+}
+.m-btn.close:hover{
+    background-color: rgb(225, 224, 224);
+}
+.m-btn.close:active{
+    background-color: rgb(215, 215, 215);
+} 
+/* btn delete */
+.m-btn.delete{
+    background-color: #DE3617;
+    border: unset;
+    color:#ffffff;
+}
+.m-btn.delete:hover{
+    background-color: #ff2f0a;
+}
+.m-btn.delete:active{
+    background-color: #f83917;
+} 
+/* Button icon */
+.m-btn.m-btn__icon {
+    padding: 0 16px;
+}
+.m-btn.m-btn__icon i {
+    font-size: 16px;
+    padding-right: 6px;
+}
+
+.disabled-btn{
+    cursor: not-allowed;
+    color: #bdbec0 !important;
+}
+.disabled-btn:hover{
+    background-color: #DE3617 !important;
+}
+.m-btn-icon__drop{
+    text-align: center;
+    padding: 0 12px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    min-width: max-content;
+    left: -3px ;
+    position: relative;
+}
+.m-btn.m-btn-icon__drop::before{
+    position: absolute;
+    content: "";
+    width: 1px;
+    height: 40px;
+    top: 0;
+    left: 0;
+    background-color: #ffffff;
+}
+.m-btn-icon__drop i{
+    width: 16px;
+    height: 16px;
+}
+.m-btn-1{
+    display: flex;
+    
+}

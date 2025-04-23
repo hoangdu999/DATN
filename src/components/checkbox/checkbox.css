@@ -1,0 +1,38 @@
+.m-input-checkbox{
+    display: none;
+}
+
+.m-checkbox-lable{
+    width: 20px;
+    height: 20px;
+    display: inline-flex;
+    border: 1px solid #afafaf;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    cursor: pointer;
+    transform: rotate(-90deg);
+    transition: 0.2s;
+    background-color: white;
+}
+.m-checkbox-lable.disabled{
+    cursor: unset;
+    background-color: #dfdfdf;
+}
+.m-checkbox-lable span{
+	display: inline-block;
+	width: 11px;
+	height: 8px;
+    transform: rotate(-90deg);
+	/* transition: 0.1s; */
+}
+.m-input-checkbox:checked ~ .m-checkbox-lable span{
+    background: url('../../assets/img/Sprites.64af8f61.svg') no-repeat -899px -316px;
+	width: 11px;
+	height: 8px;
+    /* transform: rotate(-90deg); */
+}
+.m-input-checkbox:checked ~ .m-checkbox-lable{
+    transform: rotate(90deg);
+}
+
