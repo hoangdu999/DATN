@@ -1,38 +1,30 @@
 <template>
   <div class="app-container">
-    <the-home></the-home>
+    <TheHeader />
+    <div class="router-view-wrapper">
+      <router-view />
+    </div>
   </div>
 </template>
+
 <script>
-  import TheHome from './views/home/TheHome.vue';
-  import { reactive, toRefs } from 'vue';
-  export default {
-      components: {
-          TheHome
-      },
-      setup () {
-          const state = reactive({
-              count: 0,
-          })
-      
-          return {
-              ...toRefs(state),
-          }
-      }
+import TheHeader from './components/header/TheHeader.vue'
+export default {
+  components: {
+    TheHeader
   }
+}
 </script>
+
 <style>
 @import url(./assets/css/index.css);
-.container-main {
-  margin-top: 137.59px;
-  padding: 40px 64px;
+
+.app-container {
+  position: relative;
 }
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.5s;
-}
-.fade-enter,
-.fade-leave-to {
-  opacity: 0;
+
+.router-view-wrapper {
+  margin-top: 140px; 
+  padding:20px 80px;
 }
 </style>

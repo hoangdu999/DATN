@@ -1,36 +1,48 @@
 <template>
     <div class="search-bar">
-        <input type="text" v-model="searchQuery" @input="onSearch" placeholder="Search..." />
+      <input
+        type="text"
+        v-model="searchQuery"
+        @input="onSearch"
+        :placeholder="placeholder"
+      />
     </div>
-</template>
-
-<script>
-export default {
-    name: "SearchBar",
-    data() {
-        return {
-            searchQuery: ""
-        };
-    },
-    methods: {
-        onSearch() {
-            // Emit the search query to the parent component
-            this.$emit("search", this.searchQuery);
-        }
+  </template>
+  
+  <script setup>
+  import { ref, defineProps, defineEmits } from 'vue'
+  
+  const props = defineProps({
+    placeholder: {
+      type: String,
+      default: 'Tìm kiếm...'
     }
-};
-</script>
-
-<style scoped>
-.search-bar {
-    width: 625px;
-}
-
-input {
+  })
+  
+  const emit = defineEmits(['search'])
+  const searchQuery = ref('')
+  
+  const onSearch = () => {
+    emit('search', searchQuery.value)
+  }
+  </script>
+  
+  <style scoped>
+  .search-bar {
+    width: 525px;
+  }
+  input {
     width: 100%;
     padding: 8px;
     font-size: 1rem;
     border: none;
     border-bottom: 1px solid black;
-}
-</style>
+  }
+  input:focus {
+    border: none;
+    border-bottom: 2px solid black;
+    outline: none;
+    box-shadow: none;
+  }
+  </style>
+  

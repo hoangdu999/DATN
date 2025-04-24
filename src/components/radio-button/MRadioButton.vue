@@ -11,36 +11,35 @@
     />
     <label
       :for="id"
-      :style="{
-        margin: margin,
-      }"
-      >{{ textField }}
+      :style="{ margin }"
+    >
+      {{ textField }}
     </label>
   </div>
 </template>
-<script>
-export default {
-  name: "MRadioButton",
-  emits:["change"],
-  props: {
-    textField: String,
-    margin: String,
-    nameInput: String,
-    id: String,
-    checked: Boolean,
-    tabIndex :Number
-  },
-  methods: {
-    /**
-     * Bắt sự kiện onChange
-     * Author : NVDuong (05/1/2023)
-     */
-    onChange() {
-      this.$emit("change", this.id);
-    },
-  },
-};
+
+<script setup>
+import { defineProps, defineEmits } from 'vue'
+
+// Props
+const props = defineProps({
+  textField: String,
+  margin: String,
+  nameInput: String,
+  id: String,
+  checked: Boolean,
+  tabIndex: Number
+})
+
+// Emit
+const emit = defineEmits(['change'])
+
+// Emit khi radio thay đổi
+const onChange = () => {
+  emit('change', props.id)
+}
 </script>
+
 <style scoped>
 @import url(./radio.css);
 </style>

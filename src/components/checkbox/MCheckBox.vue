@@ -1,34 +1,41 @@
 <template>
-  <input :disabled ="disabled" type="checkbox" v-bind="$attrs" name="" :id="id" class="m-input-checkbox" :checked="checked" @change="selectedCheckBox()" />
-  <label :for="id" class="m-checkbox-lable"  ><span></span></label>
+  <input
+    :disabled="disabled"
+    type="checkbox"
+    v-bind="$attrs"
+    :id="id"
+    class="m-input-checkbox"
+    :checked="checked"
+    @change="selectedCheckBox"
+  />
+  <label :for="id" class="m-checkbox-lable"><span></span></label>
 </template>
-<script>
-export default {
-    name:"MCheckBox",
-    emits:["checkbox-selected"],
-    data() {
-      return {
-      }
-    },
-    props: {
-      id : String,
-      checked : Boolean,
-      disabled : {
-        type : Boolean,
-        default : false
-      }
-    },
-    /**
-     * Truyền sự kiện chexbox
-     *  
-     */
-    methods:{
-      selectedCheckBox(){
-        this.$emit("checkbox-selected",!this.checked,this.id);
-      }
-    }
-};
+
+<script setup>
+import { defineProps, defineEmits, useAttrs } from 'vue'
+
+// Props
+const props = defineProps({
+  id: String,
+  checked: Boolean,
+  disabled: {
+    type: Boolean,
+    default: false
+  }
+})
+
+// Emit
+const emit = defineEmits(['checkbox-selected'])
+
+// $attrs (có thể được dùng để binding thêm từ component cha)
+const $attrs = useAttrs()
+
+// Emit toggle khi checkbox thay đổi
+const selectedCheckBox = () => {
+  emit('checkbox-selected', !props.checked, props.id)
+}
 </script>
+
 <style scoped>
 @import url(./checkbox.css);
 </style>
