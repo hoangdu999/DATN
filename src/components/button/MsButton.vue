@@ -38,7 +38,7 @@ const props = defineProps({
   padding: String,
   border: {
     type: String,
-    default: '1px solid rgba(0,0,0,.26)'
+    default: 'none'
   },
   typeBtn: String,
   margin: String,

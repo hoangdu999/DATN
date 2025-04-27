@@ -1,25 +1,14 @@
 <template>
-    <div>
-        TheHome
+    <div class="home">
+            <TheCard />
     </div>
-</template>
+  </template>
+<script setup>
+import TheCard from '../../components/card/TheCard.vue';
+// SVG nội dung từng Card bạn copy từ file index.html
 
-<script>
-import { reactive, toRefs } from 'vue'
-
-export default {
-    setup () {
-        const state = reactive({
-            count: 0,
-        })
-    
-        return {
-            ...toRefs(state),
-        }
-    }
-}
 </script>
 
 <style scoped>
-@import url(TheHomeCss.css);
+@import url(./TheHomeCss.css);
 </style>
