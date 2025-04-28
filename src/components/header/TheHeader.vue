@@ -3,7 +3,13 @@
     <div class="header_container flex-jsb">
       <div class="header__left flex">
         <router-link to="/" class="cur">
-          <img src="/src/assets/img/LogoMori.png" alt="Logo" class="w-80px" />
+          <div class="flex">
+            <img src="/src/assets/img/logo_tab_oboe.svg" alt="Logo" class="w-65px" />
+            <svg xmlns="http://www.w3.org/2000/svg" width="70" height="60" viewBox="0 0 70 60">
+              <text x="34" y="57" font-size="40" fill="#b90449" text-anchor="middle" font-weight="600">boe</text>
+            </svg>
+
+          </div>
         </router-link>
         <router-link to="/intro" class="cur p-hover">Giới Thiệu</router-link>
         <router-link to="/forum" class="cur p-hover">Diễn Đàn</router-link>
@@ -12,20 +18,15 @@
         <!-- 👇 Truyền placeholder động -->
         <TheSearchbar :placeholder="placeholder" />
         <ul class="options__list">
-          <li
-            v-for="(item, index) in options"
-            :key="index"
-            class="option-item p-hover"
-            :class="{ active: activeIndex === index }"
-            @click="setActive(index)"
-          >
+          <li v-for="(item, index) in options" :key="index" class="option-item p-hover"
+            :class="{ active: activeIndex === index }" @click="setActive(index)">
             {{ item }}
           </li>
         </ul>
       </div>
       <div class="header__right flex-jsa">
-        <MsButton>Đăng Ký</MsButton>
-        <MsButton>Đăng Nhập</MsButton>
+        <MsButton radius ="10px" >Đăng Ký</MsButton>
+        <MsButton radius ="10px">Đăng Nhập</MsButton>
       </div>
     </div>
   </div>

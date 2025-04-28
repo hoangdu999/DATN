@@ -12,7 +12,8 @@
         color: color,
         padding: padding,
         margin: margin,
-        border: border
+        border: border,
+        borderRadius: radius,
     }"
     :class="{
       close: typeBtn === 'close',
@@ -39,6 +40,10 @@ const props = defineProps({
   border: {
     type: String,
     default: 'none'
+  },
+  radius: {
+    type: String,
+    default: '5px'
   },
   typeBtn: String,
   margin: String,
