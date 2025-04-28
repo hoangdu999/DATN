@@ -30,7 +30,8 @@
     width: 100% !important;
     height: 100% !important;
     background: transparent !important;
-    overflow: hidden;
+position: relative; /* cần cho animation */
+    transform-style: preserve-3d;
     border-radius: 50px; /* Bo góc cha */
 }
 
@@ -345,3 +346,49 @@ Loại bỏ mọi hiệu ứng thanh sáng
 	background: linear-gradient(45deg, rgba(255, 91, 121, 0.1), rgba(255, 91, 121, 0.2));
 	border-color: rgba(255, 91, 121, 0.6);
 }
+
+.card.is-flipped {
+	animation: flipCard 1.5s forwards;
+}
+
+@keyframes flipCard {
+	0% {
+	  transform: rotateX(0deg);
+	}
+	49.9% {
+	  transform: rotateX(90deg);
+	}
+	50% {
+	  transform: rotateX(90deg) ;
+	}
+	100% {
+	  transform: rotateX(0deg);
+	}
+  }
+  
+.card:not(.is-flipped) {
+	animation: unflipCard 1.5s forwards;
+}
+
+@keyframes unflipCard {
+	0% {
+		transform: rotateX(0deg);
+	  }
+	  49.9% {
+		transform: rotateX(90deg);
+	  }
+	  50% {
+		transform: rotateX(90deg) ;
+	  }
+	  100% {
+		transform: rotateX(0deg) ;
+	  }
+  }
+  /* .card {
+	transition: all 0.5s ease;
+	transform-style: preserve-3d;
+	perspective: 1200px;
+	perspective-origin: center top; 
+  }
+  
+   */
