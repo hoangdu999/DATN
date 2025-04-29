@@ -1,47 +1,39 @@
 <template>
-  <Swiper
-    ref="swiperRef"
-    class="swiper"
-    :modules="[Autoplay, Pagination, Navigation, EffectCards]"
-    effect="cards"
-    grabCursor
-    :slides-per-view="1"
-    :space-between="30"
-    :autoplay="{
-      delay: 5000,
-      disableOnInteraction: false,
-      pauseOnMouseEnter: true
-    }"
-    :pagination="{ clickable: true }"
-    :navigation="{ nextEl: '.slider-button-next', prevEl: '.slider-button-prev' }"
-    :keyboard="{ enabled: true }"
-    :mousewheel="true"
-    @autoplayTimeLeft="onAutoplayTimeLeft"
-    @slideChange="handleSlideChange"
-    :style="{
+  <Swiper ref="swiperRef" class="swiper" :modules="[Autoplay, Pagination, Navigation, EffectCards, Keyboard]" effect="cards"
+    grabCursor :slides-per-view="1" :space-between="30" :autoplay="autoplay" :pagination="pagination" :navigation="{ nextEl: '.slider-button-next', prevEl: '.slider-button-prev' }"
+    :keyboard="{ enabled: true }" :mousewheel="true" @autoplayTimeLeft="onAutoplayTimeLeft"
+    @swiper="onSwiper"
+    @slideChange="handleSlideChange" :style="{
       width: width + 'px',
       height: height + 'px',
-    }"
-  >
-    <SwiperSlide
-      v-for="(slide, index) in slides"
-      :key="index"
-      :data-bg-color="slide.bgColor"
-      :data-progress-color="slide.progressColor"
-    >
-      <div 
-        class="card slide-item" 
-        :class="{ 'is-flipped': flippedIndex === index }"
-        @click="flipCard(index)"
-      >
-        <div class="card-content" v-if="showBackIndex !== index">
+    }">
+    <SwiperSlide v-for="(slide, index) in slides" :key="index" :data-bg-color="slide.bgColor"
+      :data-progress-color="slide.progressColor">
+      <div class="card slide-item"
+        :class="{ 'is-flipped': flippedIndex === index, 'animation-started': animationStartedList[index] }"
+        @click="flipCard(index)">
+        <div class="card-content flex" v-if="showBackIndex !== index">
           <h2 class="card-title">{{ slide.title }}</h2>
-          <p class="card-description">{{ slide.description }}</p>
-          <button class="cta-button">Learn More</button>
+          <div class="slide-content card-description flex">
+            <img v-if="isImage(slide.content)" :src="slide.content" alt="Slide Image" class="slide-image" />
+            <p  v-else class="main-content-text webkit-box webkit-line-2">{{ slide.content }}</p>
+          </div>
+          <p class="card-description webkit-box webkit-line-3">{{ slide.description }}</p>
+          <div class="flex see-more">
+            <button class="cta-button" @click.stop="onSeeMore(slide)">Xem thêm</button>
+          </div>
         </div>
+        <div class="card-content flex" v-else>
+          <h2 class="card-title fade-in-text">mặt sau</h2>
+          <div class="slide-content card-description flex">
+            <img v-if="isImage(slide.backcontent)" :src="slide.backcontent" alt="Slide Image" class="slide-image" />
+            <p  v-else class="main-content-text webkit-box webkit-line-2">{{ slide.backcontent }}</p>
+          </div>
+          <p class="card-description webkit-box webkit-line-3">{{ slide.backdescription }}</p>
+          <div class="flex see-more">
+            <button class="cta-button" @click.stop="onSeeMore(slide)">Xem thêm</button>
+          </div>
 
-        <div class="card-content" v-else>
-          <h2 class="card-title fade-in-text">Đây là mặt sau</h2>
         </div>
       </div>
     </SwiperSlide>
@@ -52,36 +44,70 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted ,onUnmounted} from 'vue'
 import { Swiper, SwiperSlide } from 'swiper/vue'
-import { Autoplay, Navigation, Pagination, EffectCards } from 'swiper/modules'
+import { Autoplay, Navigation, Pagination, EffectCards ,Keyboard} from 'swiper/modules'
+import { nextTick } from 'vue';
 
 import 'swiper/css'
 import 'swiper/css/effect-cards'
 import 'swiper/css/pagination'
 import 'swiper/css/navigation'
 
-defineProps({
+const { slides, width, height, pagination, autoplay } = defineProps({
   slides: {
     type: Array,
     required: true
   },
   width: {
     type: Number,
-    default: 800
+    default: 600
   },
   height: {
     type: Number,
-    default: 500
+    default: 400
+  },
+  pagination: {
+    type: [Object, Boolean],
+    default: () => ({ type: 'fraction' })
+  },
+  autoplay: {
+    type: [Object, Boolean],
+    default: false 
   }
-})
+});
+const swiperRef = ref(null);
+const flippedIndex = ref(null);
+const showBackIndex = ref(null);
+const animationStartedList = ref([]);
+const activeIndex = ref(0);
+const swiperInstance = ref(null);
 
-const swiperRef = ref(null)
-const flippedIndex = ref(null)
-const showBackIndex = ref(null)
 
-function flipCard(index) {
-  if (flippedIndex.value === index) {
+// Khi Swiper khởi tạo xong thì gọi hàm này để lưu lại instance
+function onSwiper(swiper) {
+  swiperInstance.value = swiper;
+}
+
+
+// Xử lý khi bấm nút "Xem thêm"
+function onSeeMore(slide) {
+  console.log("Clicked Xem thêm:", slide);
+  // ví dụ: mở modal, hoặc navigate đến route chi tiết
+}
+
+// Kiểm tra một nội dung có phải hình ảnh không
+function isImage(content) {
+  if (!content) return false;
+  return /\.(jpg|jpeg|png|webp|gif|bmp|svg)$/i.test(content);
+}
+
+
+// Hàm lật thẻ (flip) slide
+ function flipCard(index) {
+  if (!animationStartedList.value[index]) {
+    animationStartedList.value[index] = true;
+  } if (flippedIndex.value === index) {
     // Đang ở mặt sau => lật về mặt trước
     flippedIndex.value = null;
     setTimeout(() => {
@@ -97,11 +123,20 @@ function flipCard(index) {
 }
 
 
+// Xử lý khi chuyển slide (slideChange event)
 function handleSlideChange() {
+  console.log("swiper", swiperInstance.value)
+  if (swiperInstance.value) {
+    activeIndex.value = swiperInstance.value.activeIndex
+    console.log("activeIndex", activeIndex.value)
+  }
   flippedIndex.value = null
   showBackIndex.value = null
 }
 
+
+
+// Xử lý khi autoplay đang đếm ngược thời gian
 function onAutoplayTimeLeft(swiper, time, progress) {
   document.querySelectorAll('.autoplay-progress svg')?.forEach(svg => {
     svg.style.setProperty('--progress', 1 - progress)
@@ -111,20 +146,18 @@ function onAutoplayTimeLeft(swiper, time, progress) {
   })
 }
 
-function updateBackground() {
-  const activeSlide = swiperRef.value?.swiper?.slides[swiperRef.value.swiper.activeIndex]
-  if (!activeSlide) return
-
-  const bgColor = activeSlide.getAttribute('data-bg-color')
-  const progressColor = activeSlide.getAttribute('data-progress-color')
-
-  document.body.style.backgroundColor = bgColor
-  document.body.style.setProperty('--progress-color', progressColor)
-  document.body.style.setProperty('--theme-color', bgColor)
+// Bắt phím toàn cục (global keydown) để lật thẻ bằng phím Up Arrow
+function handleGlobalKeyDown(e) {
+  if (e.code === 'ArrowUp') {
+    e.preventDefault()
+    flipCard(activeIndex.value)
+  }
 }
-
 onMounted(() => {
-  updateBackground()
+  document.body.addEventListener('keydown', handleGlobalKeyDown)
+})
+onUnmounted(() => {
+  document.body.removeEventListener('keydown', handleGlobalKeyDown)
 })
 </script>
 

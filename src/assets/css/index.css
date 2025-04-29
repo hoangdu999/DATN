@@ -68,10 +68,7 @@ i:hover {
 li {
   list-style-type: none;
 }
-img {
-  height: 100%;
-  width: 100%;
-}
+
 .flex {
   display: flex;
 }
