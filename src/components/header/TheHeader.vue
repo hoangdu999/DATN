@@ -11,8 +11,8 @@
 
           </div>
         </router-link>
-        <router-link to="/intro" class="cur p-hover">Giới Thiệu</router-link>
-        <router-link to="/forum" class="cur p-hover">Diễn Đàn</router-link>
+        <router-link to="/intro" class="size-17 cur p-hover">Giới Thiệu</router-link>
+        <router-link to="/forum" class="size-17 cur p-hover">Diễn Đàn</router-link>
       </div>
       <div class="header__searchbar">
         <!-- 👇 Truyền placeholder động -->
@@ -25,8 +25,12 @@
         </ul>
       </div>
       <div class="header__right flex-jsa">
-        <MsButton radius ="10px" >Đăng Ký</MsButton>
-        <MsButton radius ="10px">Đăng Nhập</MsButton>
+        <router-link to="/auth" class="cur p-hover">
+          <MsButton radius="10px">Đăng Ký</MsButton>
+        </router-link>
+        <router-link to="/auth" class="cur p-hover">
+          <MsButton radius="10px">Đăng Nhập</MsButton>
+        </router-link>
       </div>
     </div>
   </div>

@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <TheCard :slides="listSlides" :width="700" :height="400" :pagination="{ clickable: true }"
+    <TheCard :slides="listSlides" :width="700" :height="400" :pagination="{ clickable: true }" :canFlip="true"
     
       
       />

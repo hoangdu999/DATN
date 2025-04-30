@@ -1,9 +1,9 @@
 <template>
-  <Swiper ref="swiperRef" class="swiper" :modules="[Autoplay, Pagination, Navigation, EffectCards, Keyboard]" effect="cards"
-    grabCursor :slides-per-view="1" :space-between="30" :autoplay="autoplay" :pagination="pagination" :navigation="{ nextEl: '.slider-button-next', prevEl: '.slider-button-prev' }"
-    :keyboard="{ enabled: true }" :mousewheel="true" @autoplayTimeLeft="onAutoplayTimeLeft"
-    @swiper="onSwiper"
-    @slideChange="handleSlideChange" :style="{
+  <Swiper ref="swiperRef" class="swiper" :modules="[Autoplay, Pagination, Navigation, EffectCards, Keyboard]"
+    effect="cards" grabCursor :slides-per-view="1" :space-between="30" :autoplay="autoplay" :pagination="pagination"
+    :navigation="{ nextEl: '.slider-button-next', prevEl: '.slider-button-prev' }" :keyboard="{ enabled: true }"
+    :mousewheel="true" @autoplayTimeLeft="onAutoplayTimeLeft" @swiper="onSwiper" @slideChange="handleSlideChange"
+    :style="{
       width: width + 'px',
       height: height + 'px',
     }">
@@ -15,8 +15,15 @@
         <div class="card-content flex" v-if="showBackIndex !== index">
           <h2 class="card-title">{{ slide.title }}</h2>
           <div class="slide-content card-description flex">
-            <img v-if="isImage(slide.content)" :src="slide.content" alt="Slide Image" class="slide-image" />
-            <p  v-else class="main-content-text webkit-box webkit-line-2">{{ slide.content }}</p>
+            <slot name="content" :slide="slide">
+              <template v-if="isImage(slide.content)">
+                <img :src="slide.content" alt="Slide Image" class="slide-image" />
+              </template>
+              <template v-else>
+                <p class="main-content-text webkit-box webkit-line-2">{{ slide.content }}</p>
+              </template>
+            </slot>
+
           </div>
           <p class="card-description webkit-box webkit-line-3">{{ slide.description }}</p>
           <div class="flex see-more">
@@ -26,8 +33,14 @@
         <div class="card-content flex" v-else>
           <h2 class="card-title fade-in-text">mặt sau</h2>
           <div class="slide-content card-description flex">
-            <img v-if="isImage(slide.backcontent)" :src="slide.backcontent" alt="Slide Image" class="slide-image" />
-            <p  v-else class="main-content-text webkit-box webkit-line-2">{{ slide.backcontent }}</p>
+            <slot name="backcontent" :slide="slide">
+              <template v-if="isImage(slide.backcontent)">
+                <img :src="slide.backcontent" alt="Slide Image" class="slide-image" />
+              </template>
+              <template v-else>
+                <p class="main-content-text webkit-box webkit-line-2">{{ slide.backcontent }}</p>
+              </template>
+            </slot>
           </div>
           <p class="card-description webkit-box webkit-line-3">{{ slide.backdescription }}</p>
           <div class="flex see-more">
@@ -44,9 +57,9 @@
 </template>
 
 <script setup>
-import { ref, onMounted ,onUnmounted} from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 import { Swiper, SwiperSlide } from 'swiper/vue'
-import { Autoplay, Navigation, Pagination, EffectCards ,Keyboard} from 'swiper/modules'
+import { Autoplay, Navigation, Pagination, EffectCards, Keyboard } from 'swiper/modules'
 import { nextTick } from 'vue';
 
 import 'swiper/css'
@@ -54,7 +67,7 @@ import 'swiper/css/effect-cards'
 import 'swiper/css/pagination'
 import 'swiper/css/navigation'
 
-const { slides, width, height, pagination, autoplay } = defineProps({
+const { slides, width, height, pagination, autoplay, canFlip } = defineProps({
   slides: {
     type: Array,
     required: true
@@ -73,9 +86,14 @@ const { slides, width, height, pagination, autoplay } = defineProps({
   },
   autoplay: {
     type: [Object, Boolean],
-    default: false 
+    default: false
+  },
+  canFlip: {
+    type: Boolean,
+    default: true
   }
 });
+
 const swiperRef = ref(null);
 const flippedIndex = ref(null);
 const showBackIndex = ref(null);
@@ -104,7 +122,8 @@ function isImage(content) {
 
 
 // Hàm lật thẻ (flip) slide
- function flipCard(index) {
+function flipCard(index) {
+  if (!canFlip) return; // Nếu không cho lật, thoát luôn
   if (!animationStartedList.value[index]) {
     animationStartedList.value[index] = true;
   } if (flippedIndex.value === index) {

@@ -27,11 +27,14 @@
     --swiper-pagination-bullet-size: 10px;
     --swiper-pagination-bullet-opacity: 1;
 }
-
+.swiper-slide,
+.swiper-slide-shadow,
+.swiper-slide-duplicate {
+  background-color: transparent  !important;
+}
 .swiper-slide {
     width: 100% !important;
     height: 100% !important;
-    background: transparent !important;
 	position: relative;
     transform-style: preserve-3d;
     border-radius: 50px;
@@ -269,11 +272,11 @@ Loại bỏ mọi hiệu ứng thanh sáng
 	animation-delay: 0.5s;
 }
 
-.swiper-slide-active .card-description {
+/* .swiper-slide-active .card-description {
 	animation: fadeIn;
 	animation-duration: 1s;
 	animation-delay: 0.7s;
-}
+} */
 
 /* Hiệu ứng cho nút CTA */
 
@@ -324,9 +327,9 @@ Loại bỏ mọi hiệu ứng thanh sáng
 	animation: slideInUp 0.8s 0.2s forwards cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-.swiper-slide-active .card-content .card-description {
+/* .swiper-slide-active .card-content .card-description {
 	animation: slideInUp 0.8s 0.4s forwards cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
+} */
 
 .swiper-slide-active .card-content .card-cta {
 	animation: slideInUp 0.8s 0.6s forwards cubic-bezier(0.25, 0.46, 0.45, 0.94);

@@ -182,7 +182,6 @@ li {
 .pb-25 {
   padding-bottom: 25px;
 }
-
 .h-30 {
   height: 30px;
 }
@@ -245,6 +244,12 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 .cl-black {
   color: black;
+}
+.size-17 {
+  font-size: 17px;
+}
+.size-20 {
+  font-size: 20px;
 }
 .size-120 {
   font-size: 120%;
