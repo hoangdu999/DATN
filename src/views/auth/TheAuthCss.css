@@ -10,8 +10,8 @@
   
 
   .swiper {
-    width: 400px;
-    height: 400px;
+    width: 500px;
+    height: 500px;
     --swiper-pagination-color: #FF5B79;
     --swiper-pagination-bullet-inactive-color: rgba(255, 255, 255, 0.3);
     --swiper-pagination-bullet-size: 10px;
