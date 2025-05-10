@@ -27,7 +27,7 @@
 </template>
 
 <script setup>
-import { ref, defineProps, defineEmits } from 'vue'
+import { ref, } from 'vue'
 
 // Define props
 const props = defineProps({
@@ -66,5 +66,5 @@ const onClick = (event) => {
 </script>
 
 <style scoped>
-@import url(./button.css);
+@import url(./ButtonCss.scss);
 </style>

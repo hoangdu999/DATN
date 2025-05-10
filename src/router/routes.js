@@ -1,7 +1,8 @@
 // filepath: src/router/index.js
 import TheHome from "../views/home/TheHome.vue";
 import TheIntro from "../views/intro/TheIntro.vue";
-import TheAuth from "../views/auth/TheAuth.vue";
+import TheLogin from "../views/login/TheLogin.vue";
+import TheRegister from "../views/register/TheRegister.vue";
 const routes = [
   {
     path: "/",
@@ -14,9 +15,14 @@ const routes = [
     component: TheIntro,
   },
   {
-    path: "/auth",
-    name: "Auth",
-    component: TheAuth,
+    path: "/login",
+    name: "Login",
+    component: TheLogin,
+  },
+  {
+    path: "/register",
+    name: "Register",
+    component: TheRegister,
   },
   
 ];

@@ -1,41 +1,23 @@
 <template>
-  <input
-    :disabled="disabled"
-    type="checkbox"
-    v-bind="$attrs"
-    :id="id"
-    class="m-input-checkbox"
-    :checked="checked"
-    @change="selectedCheckBox"
-  />
-  <label :for="id" class="m-checkbox-lable"><span></span></label>
+  <label class="smart-checkbox">
+    <input type="checkbox" :checked="modelValue" @change="$emit('update:modelValue', $event.target.checked)"
+      :style="{ width: size + 'px', height: size + 'px' }" />
+    <span class="checkmark"></span>
+    <slot />
+  </label>
 </template>
 
 <script setup>
-import { defineProps, defineEmits, useAttrs } from 'vue'
-
-// Props
-const props = defineProps({
-  id: String,
-  checked: Boolean,
-  disabled: {
-    type: Boolean,
-    default: false
+defineProps({
+  modelValue: Boolean,
+  size: {
+    type: Number,
+    default: 20 // Kích thước mặc định là 20px
   }
 })
-
-// Emit
-const emit = defineEmits(['checkbox-selected'])
-
-// $attrs (có thể được dùng để binding thêm từ component cha)
-const $attrs = useAttrs()
-
-// Emit toggle khi checkbox thay đổi
-const selectedCheckBox = () => {
-  emit('checkbox-selected', !props.checked, props.id)
-}
+defineEmits(['update:modelValue'])
 </script>
 
 <style scoped>
-@import url(./checkbox.css);
+@import url(./CheckBoxCss.scss);
 </style>

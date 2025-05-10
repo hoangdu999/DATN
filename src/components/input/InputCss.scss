@@ -12,7 +12,7 @@
     color: red;
   }
   .m-input-main {
-    height: var(--height-default);
+    height: $height-default;
     position: relative;
   }
   .m-input {
@@ -47,7 +47,7 @@
     font-size: 14px;
   }
   .m-input:focus {
-    border: 1px solid var(--bgr-header);
+    border: 1px solid $bgr-header;
   }
   .m-input-icon {
     position: absolute;

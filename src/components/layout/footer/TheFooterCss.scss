@@ -1,0 +1,45 @@
+.footer{
+    margin-top:20px ;
+    box-shadow: 0 0 20px $header-footer-shadow;
+    border-radius: $header-footer-border-radius $header-footer-border-radius 0 0;
+}
+.footer-logo {
+  margin-bottom: 20px;
+}
+.footer-bot{
+    padding: 30px 80px;
+}
+.footer-infor{
+    flex-basis: 24%;
+}
+.footer-logo{
+    width: 200px;
+}
+.fas,.far{
+    font-size: 20px;
+}
+.fab{
+    font-size: 40px;
+}
+.footer-infortext{
+    font-size: 120%;
+}
+.footer-inforicon{
+    width: 25px;
+}
+.listservies-hr{
+    border-bottom: 1px solid black;
+    width: 30%;
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+.listservies-box{
+    flex-basis: 24%;
+}
+.listservies-detail{
+    margin-bottom: 15px;
+    font-size: 110%;
+}
+.listservies-title{
+    font-size: 120%;
+}

@@ -1,5 +1,5 @@
 @media only screen and (max-width: 726px) {
-  .icon-bar-content{
+  /* .icon-bar-content{
     display: unset !important;
     position: absolute;
   }
@@ -16,12 +16,10 @@
   .home-wrapper{
     margin: 0  20px!important;
   }
-  /* Thu gọn menu */
   .sidebar-menu{
     width: 50% !important;
   }
-  /* Thu gọn menu */
   .sidebar-menu.m-menu-collapse{
     width: 0px !important;
-  }
+  } */
 }

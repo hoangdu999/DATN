@@ -1,22 +1,22 @@
 .m-btn{
     font-size: 13px;
-    background-color: var(--btn-primary);
+    background-color: $btn-primary;
     color: #ffffff;
     border: none;
     /* outline: none; */
     border-radius: 3px;
     text-align: center;
     padding: 0  16px;
-    height: var(--height-default);
+    height: $height-default;
     cursor: pointer;
     font-weight: 600;
-    height: var(--height-default);
+    height: $height-default;
     font-family: inherit;
     min-width: 80px;
 }
 
 .m-btn:active{
-    background-color: var(--bgr-header);
+    background-color: $btn-primary-2;
 } 
 /* btn close */
 .m-btn.close{

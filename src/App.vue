@@ -4,20 +4,17 @@
     <div class="router-view-wrapper">
       <router-view />
     </div>
+    <TheFooter />
   </div>
 </template>
 
-<script>
-import TheHeader from './components/header/TheHeader.vue'
-export default {
-  components: {
-    TheHeader
-  }
-}
+<script setup>
+import TheFooter from './components/layout/footer/TheFooter.vue';
+import TheHeader from './components/layout/header/TheHeader.vue'
+import '@fortawesome/fontawesome-free/css/all.min.css'
 </script>
 
-<style>
-@import url(./assets/css/index.css);
+<style lang="scss">
 
 .app-container {
   position: relative;

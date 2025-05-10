@@ -1,20 +1,61 @@
 // store/modules/cart.js
 export default {
-    namespaced: true,
-    state: () => ({
-      slides: [
-        { title: 'Slide 1', description: 'Description 1', bgColor: '#411a29', progressColor: '#FF5B79', class: 'slide-item' },
-        { title: 'Slide 2', description: 'Description 2', bgColor: '#1E1B4B', progressColor: '#4F46E5', class: 'slide-item' },
-        { title: 'Slide 3', description: 'Description 3', bgColor: '#0C3720', progressColor: '#5b874b', class: 'slide-item' }
-      ],
-    }),
-    mutations: {
-      setSlides(state, newSlides) {
-        state.slides = newSlides;
+  namespaced: true,
+  state: () => ({
+    slides: [
+      {
+        title: "Slide 1",
+        description:
+          "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magnam, cupiditate fugiat ratione vero suscipit labore voluptatum obcaecati quasi vitae explicabo eum accusantium modi eveniet commodi, assumenda illo aliquid veritatis delectus.",
+        content:
+          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Et a fuga minima obcaecati repellat, accusamus quis aut sunt eius illum reiciendis repellendus nihil rem. Minima dolorum perspiciatis neque amet esse?",
+        backdescription: "mô tả chi tiết mặt sau",
+        backcontent: "Oboeru",
       },
+      {
+        title: "Slide 2",
+        description: "mô tả chi tiết",
+        content:
+          "https://images2.thanhnien.vn/528068263637045248/2024/1/25/c3c8177f2e6142e8c4885dbff89eb92a-65a11aeea03da880-1706156293184503262817.jpg",
+        backdescription: "mô tả chi tiết mặt sau",
+        backcontent: "Oboeru",
+      },
+      {
+        title: "Slide 3",
+        description: "mô tả chi tiết",
+        content: "Oboe",
+        backdescription: "mô tả chi tiết mặt sau",
+        backcontent: "Oboeru",
+      },
+      {
+        title: "Slide 4",
+        description: "mô tả chi tiết",
+        content: "Oboe",
+        backdescription: "mô tả chi tiết mặt sau",
+        backcontent: "Oboeru",
+      },
+      {
+        title: "Slide 5",
+        description: "mô tả chi tiết",
+        content: "Oboe",
+        backdescription: "mô tả chi tiết mặt sau",
+        backcontent: "Oboeru",
+      },
+      {
+        title: "Slide 6",
+        description: "mô tả chi tiết",
+        content: "Oboe",
+        backdescription: "mô tả chi tiết mặt sau",
+        backcontent: "Oboeru",
+      },
+    ],
+  }),
+  mutations: {
+    setSlides(state, newSlides) {
+      state.slides = newSlides;
     },
-    getters: {
-      slides: (state) => state.slides,
-    },
-  };
-  
+  },
+  getters: {
+    slides: (state) => state.slides,
+  },
+};

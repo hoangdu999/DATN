@@ -40,7 +40,7 @@
 </template>
 
 <script setup>
-import { ref, computed, defineProps, defineEmits } from 'vue'
+import { ref, computed, } from 'vue'
 
 // Props
 const props = defineProps({
@@ -101,5 +101,5 @@ const marginTopInput = computed(() => {
 </script>
 
 <style scoped>
-@import url('./InputCss.css'); 
+@import url('./InputCss.scss'); 
 </style>

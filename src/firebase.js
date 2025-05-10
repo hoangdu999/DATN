@@ -1,11 +1,10 @@
-
+// src/firebase.js
 export default {
-    apiKey: "AIzaSyBnMV4sdMlEskVL5Sh-InknkkRGYfDvTgw",
-    authDomain: "oboe-6e0c1.firebaseapp.com",
-    projectId: "oboe-6e0c1",
-    storageBucket: "oboe-6e0c1.firebasestorage.app",
-    messagingSenderId: "781386500299",
-    appId: "1:781386500299:web:97409e33224c3320b9f34e",
-    measurementId: "G-3DRW6MRPM3"
-};
-
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID,
+}

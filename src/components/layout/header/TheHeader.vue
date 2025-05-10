@@ -2,20 +2,11 @@
   <div class="header">
     <div class="header_container flex-jsb">
       <div class="header__left flex">
-        <router-link to="/" class="cur">
-          <div class="flex">
-            <img src="/src/assets/img/logo_tab_oboe.svg" alt="Logo" class="w-65px" />
-            <svg xmlns="http://www.w3.org/2000/svg" width="70" height="60" viewBox="0 0 70 60">
-              <text x="34" y="57" font-size="40" fill="#b90449" text-anchor="middle" font-weight="600">boe</text>
-            </svg>
-
-          </div>
-        </router-link>
+        <TheLogo />
         <router-link to="/intro" class="size-17 cur p-hover">Giới Thiệu</router-link>
         <router-link to="/forum" class="size-17 cur p-hover">Diễn Đàn</router-link>
       </div>
       <div class="header__searchbar">
-        <!-- 👇 Truyền placeholder động -->
         <TheSearchbar :placeholder="placeholder" />
         <ul class="options__list">
           <li v-for="(item, index) in options" :key="index" class="option-item p-hover"
@@ -25,10 +16,10 @@
         </ul>
       </div>
       <div class="header__right flex-jsa">
-        <router-link to="/auth" class="cur p-hover">
+        <router-link to="/register" class="cur p-hover">
           <MsButton radius="10px">Đăng Ký</MsButton>
         </router-link>
-        <router-link to="/auth" class="cur p-hover">
+        <router-link to="/login" class="cur p-hover">
           <MsButton radius="10px">Đăng Nhập</MsButton>
         </router-link>
       </div>
@@ -39,8 +30,9 @@
 <script setup>
 import { reactive, toRefs, computed, watch } from 'vue'
 import { useStore } from 'vuex'
-import MsButton from '../button/MsButton.vue'
-import TheSearchbar from '../searchbar/TheSearchbar.vue'
+import MsButton from '../../button/MsButton.vue'
+import TheSearchbar from '../../searchbar/TheSearchbar.vue'
+import TheLogo from '../../logo/TheLogo.vue'
 
 const store = useStore()
 
@@ -65,5 +57,5 @@ const { activeIndex, placeholder } = toRefs(state)
 </script>
 
 <style scoped>
-@import url(./TheHeaderCss.css);
+@import url(./TheHeaderCss.scss);
 </style>

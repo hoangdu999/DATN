@@ -19,7 +19,6 @@
 </template>
 
 <script setup>
-import { defineProps, defineEmits } from 'vue'
 
 // Props
 const props = defineProps({
@@ -41,5 +40,5 @@ const onChange = () => {
 </script>
 
 <style scoped>
-@import url(./radio.css);
+@import url(./RadioButtonCss.scss);
 </style>
