@@ -2,7 +2,7 @@
 export default {
     namespaced: true,
     state: () => ({
-      options: ['Từ Vựng', 'Hán Tự', 'Mẫu Câu', 'Ngữ Pháp'],
+      options: ['Từ Vựng', 'Hán Tự', 'Ngữ Pháp', 'Mẫu câu'],
       activeIndex: 0,
     }),
     mutations: {

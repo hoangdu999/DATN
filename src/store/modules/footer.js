@@ -1,27 +1,26 @@
 // store/modules/footer.js
 export default {
+  // Kích hoạt chế độ namespaced để module này được phân biệt rõ trong store
   namespaced: true,
+
+  // State: lưu trữ dữ liệu cho phần chân trang (footer)
   state: () => ({
     ListInfor: [
       {
         icon: "fas fa-mobile-screen-button",
-        title: "0775751954 (Main)",
-      },
-      {
-        icon: "fas fa-mobile-screen-button",
-        title: "0775751954 (Secondary)",
+        title: "0775751954",
       },
       {
         icon: "far fa-envelope",
-        title: "duhc1@vmogroup.com",
+        title: "bophanchamsoc@oboe.com",
       },
       {
         icon: "far fa-map",
-        title: "Hoai Duc, Hanoi, Vietnam",
+        title: "Hoài Đức, Hà Nội, Việt Nam",
       },
       {
         icon: "far fa-clock",
-        title: "Mon - Sun: 8:00 AM - 12:00 AM",
+        title: "Thứ 2 - CN: 8:00 - 24:00",
       },
     ],
     ListCNC: [
@@ -32,47 +31,54 @@ export default {
     ],
     ListServies: [
       {
-        title: "CUSTOMER SERVICES",
+        title: "DỊCH VỤ KHÁCH HÀNG",
         service: [
-          "Terms and Conditions",
-          "Return and Refund Policy",
-          "Shipping Policy",
-          "Privacy Policy",
-          "Online Shopping Guide",
+          { title: "Điều khoản dịch vụ", link: "/dieukhoan" },
+          { title: "Chính sách quyền riêng tư", link: "/baomat" },
+          { title: "Hướng dẫn tự học", link: "/huong-dan-hoc" },
+          { title: "Hướng dẫn thanh toán", link: "/huong-dan-thanh-toan" },
         ],
       },
       {
-        title: "USAGE TIPS",
+        title: "MẸO SỬ DỤNG",
         service: [
-          "Why choose high-quality silver?",
-          "How to clean silver jewelry at home",
-          "Differences between S925, S999 silver",
-          "Benefits of silver",
-          "How to maintain silver jewelry",
+          { title: "Tại sao nên học flashcard", link: "/flashcard" },
+          { title: "Cách học Tiếng Nhật tại nhà", link: "/tu-hoc-nhat" },
+          {
+            title: "Phân biệt hiragana, katakana",
+            link: "/hiragana-vs-katakana",
+          },
+          { title: "Lợi ích của học Tiếng Nhật", link: "/loi-ich-hoc-nhat" },
+          { title: "Cách nhận diện chữ Hán", link: "/chu-han" },
         ],
       },
       {
-        title: "GENERAL INFORMATION",
+        title: "THÔNG TIN CHUNG",
         service: [
-          "Jewelry News",
-          "Membership Benefits",
-          "Affiliate Program",
-          "Review Rewards",
-          "Thank You Gifts",
-          "Contact Us",
+          { title: "Tin tức thị trường Nhật Bản", link: "/tin-tuc" },
+          { title: "Quyền lợi nâng cấp tài khoản", link: "/nang-cap" },
+          { title: "Liên hệ chúng tôi", link: "/lien-he" },
         ],
       },
       {
-        title: "FEEDBACK",
+        title: "GÓP Ý",
         service: [
-          "LiLi values your feedback to enhance products and services.",
-          "Please don't hesitate to share your feedback with us. Thank you!",
+          {
+            title:
+              "Oboe rất tôn trọng và trân trọng từng góp ý của bạn để nâng cao chất lượng dịch vụ.",
+            link: "",
+          },
+          {
+            title: "Xin hãy chia sẻ với Oboe nhé. Oboe Xin chân thành cảm ơn!",
+            link: "",
+          },
         ],
       },
     ],
   }),
+
+  // Các mutation để cập nhật dữ liệu nếu cần
   mutations: {
-    // Nếu bạn cần thay đổi các state này sau này, có thể tạo các mutations ở đây
     setListInfor(state, newListInfor) {
       state.ListInfor = newListInfor;
     },
@@ -83,8 +89,9 @@ export default {
       state.ListServies = newListServies;
     },
   },
+
+  // Các getter để lấy dữ liệu từ state
   getters: {
-    // Getters để lấy các state đã lưu
     ListInfor: (state) => state.ListInfor,
     ListCNC: (state) => state.ListCNC,
     ListServies: (state) => state.ListServies,

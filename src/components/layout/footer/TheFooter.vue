@@ -4,11 +4,7 @@
       <div class="footer-infor">
         <TheLogo class="footer-logo" />
         <ul>
-          <li
-            class="flex cur p-hover"
-            v-for="(item, index) in listInfor"
-            :key="index"
-          >
+          <li class="flex p-hover" v-for="(item, index) in listInfor" :key="index">
             <div class="mr-10 pb-25 footer-inforicon">
               <i :class="item.icon" class="w-100"></i>
             </div>
@@ -16,11 +12,7 @@
           </li>
         </ul>
         <ul class="flex">
-          <li
-            class="mr-10"
-            v-for="(item, index) in listCNC"
-            :key="index"
-          >
+          <li class="mr-10" v-for="(item, index) in listCNC" :key="index">
             <a :href="item.src">
               <i :class="item.icon" class="w-100"></i>
             </a>
@@ -29,32 +21,23 @@
       </div>
       <div class="footer-listservies-hr">
         <ul class="flex">
-          <li
-            class="mr-10 listservies-box"
-            v-for="(items, index) in listServies"
-            :key="index"
-          >
+          <li class="mr-10 listservies-box" v-for="(items, outerIndex) in listServies" :key="outerIndex">
             <p class="listservies-title">{{ items.title }}</p>
             <div class="listservies-hr"></div>
             <ul>
-              <li
-                class="listservies-detail cur p-hover"
-                v-for="(item, index) in items.service"
-                :key="index"
-              >
-                <a href="/dieukhoan">
-                  <p>{{ item }}</p>
+              <li :class="[
+                'listservies-detail',
+                {
+                  cur: outerIndex !== listServies.length - 1,
+                  'p-hover': outerIndex !== listServies.length - 1
+                }
+              ]" v-for="(item, innerIndex) in items.service" :key="innerIndex">
+                <a :href="item.link || '#'">
+                  <p>{{ item.title }}</p>
                 </a>
               </li>
-              <MsButton
-                class="button-hover"
-                border ="1px solid #000"
-                width="100%"
-                height="40px"
-                backgroundColor="#ffff"
-                color="black"
-                v-if="index === listServies.length - 1"
-              >
+              <MsButton class="button-hover" border="1px solid #000" width="100%" height="40px" backgroundColor="#ffff"
+                color="black" v-if="outerIndex === listServies.length - 1">
                 SEND COMMENTS
               </MsButton>
             </ul>
